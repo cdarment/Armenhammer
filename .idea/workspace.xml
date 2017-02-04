@@ -20,7 +20,7 @@
       <file leaf-file-name="Deliverable1.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Deliverable1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
+            <state relative-caret-position="133">
               <caret line="58" column="14" lean-forward="false" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
               <folding />
             </state>
@@ -240,15 +240,15 @@
       <option name="presentableId" value="Default" />
       <updated>1484877405379</updated>
       <workItem from="1484877406613" duration="3144000" />
-      <workItem from="1486084957240" duration="4610000" />
+      <workItem from="1486084957240" duration="4669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7754000" />
+    <option name="totallyTimeSpent" value="7813000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="7" y="26" width="1343" height="688" extended-state="0" />
+    <frame x="7" y="26" width="1343" height="688" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24943481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -300,7 +300,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Deliverable1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
+        <state relative-caret-position="133">
           <caret line="58" column="14" lean-forward="false" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
           <folding />
         </state>
