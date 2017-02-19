@@ -15,9 +15,9 @@ require_once (FS_TEMPLATES. 'Layout.php');
 // Generate HTML for top of the page
 Layout::pageTop('CSC206 Project');
 
-Layout::article1('Halo','lsdkgsaodigjo','Brandon');
+Layout::article1('Halo','','Brandon');
 
-Layout::article2('Open', 'world','kaofawefoajopa','Caleb');
+Layout::article2('Open world', '','kaofawefoajopa','Caleb');
 
 Layout::article3('Online', 'kajioefae', 'John');
 
@@ -28,9 +28,11 @@ Layout::blogpage('Blogs');
  * It's a simple implementation but it works
  *
  */
+// Generate HTML for bottom of the page
+
 ?>
 
 
 
-// Generate HTML for bottom of the page
+
 Layout::pagebottom();

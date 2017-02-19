@@ -38,7 +38,7 @@ if (! defined('DB_NAME')) define('DB_NAME', 'csc206_madeira');
  * FS_TEMPLATES is defined as FS_ROOT + includes/  OR  C:\xampp\htdocs\templates/
  *
  */
-if (! defined('FS_ROOT')) define('FS_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/../');
+if (! defined('FS_ROOT')) define('FS_ROOT', $_SERVER['DOCUMENT_ROOT'] .'/');
 if (! defined('FS_INCLUDES')) define('FS_INCLUDES',  FS_ROOT.'includes/');
 if (! defined('FS_TEMPLATES')) define('FS_TEMPLATES', FS_ROOT . 'templates/');
 /**
