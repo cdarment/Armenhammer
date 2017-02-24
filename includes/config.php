@@ -7,9 +7,9 @@
  */
 // Define database connection parameters
 if (! defined('DB_USER')) define('DB_USER', 'csc206');
-if (! defined('DB_PASS')) define('DB_PASS', 'Geneva2017');
+if (! defined('DB_PASS')) define('DB_PASS', 'geneva');
 if (! defined('DB_HOST')) define('DB_HOST', 'localhost');
-if (! defined('DB_NAME')) define('DB_NAME', 'csc206_madeira');
+if (! defined('DB_NAME')) define('DB_NAME', 'cdarment/Armenhammer');
 /**
  * These constants point to various places in the filesystem where you will store certain
  * types of files. For you windows / graphical people these are the folders that you see in

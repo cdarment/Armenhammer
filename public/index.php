@@ -32,7 +32,4 @@ Layout::blogpage('Blogs');
 
 ?>
 
-
-
-
-Layout::pagebottom();
+Layout::pageBottom();
