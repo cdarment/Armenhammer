@@ -32,7 +32,8 @@ Layout::pageTop('CSC206 Project');
                     echo '<pre>';
                     print_r($_POST);
                     echo '</pre>';
-
+                    $sql = "insert into createPost (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
+                    $db->query($sql);
 
 
                 }
@@ -132,4 +133,8 @@ function showForm($data = null)
         </fieldset>
     </form>
 postform;
+}
+postdata;
+    {
+    }
 }
