@@ -10,6 +10,16 @@ require($_SERVER[ 'DOCUMENT_ROOT'] . '/includes/application_includes.php');
 // Include the HTML layout class
 require_once (FS_TEMPLATES. 'Layout.php');
 
+
+// Connect to the database
+$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Get the stories for column 1 from the database
+$sql = 'select * from posts';
+$posts = $db->query($sql);
+// Run a simple query that will be rendered in column 2 below
+$sql = 'select id, name, description from pages';
+$res = $db->query($sql);
+
 //$db = new Datebase(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // Generate HTML for top of the page

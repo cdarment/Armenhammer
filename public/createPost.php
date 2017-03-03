@@ -32,8 +32,15 @@ Layout::pageTop('CSC206 Project');
                     echo '<pre>';
                     print_r($_POST);
                     echo '</pre>';
-                    $sql = "insert into createPost (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
+                    $sql = "insert into post (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
                     $db->query($sql);
+
+                    $title = $_POST['title'];
+                    $startDate = $_POST['startDate'];
+                    $startDate = date('Y-m-d h:i:s', strtotime($startDate));
+                    $endDate = $_POST['endDate'];
+                    $endDate = date('Y-m-d h:i:s', strtotime($endDate));
+
 
 
                 }
