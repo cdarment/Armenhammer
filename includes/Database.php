@@ -6,7 +6,7 @@
  * Date: 2/9/2017
  * Time: 7:15 PM
  */
-class Datebase
+class Database
 {
     /**
      * Stores error messages for connection errors

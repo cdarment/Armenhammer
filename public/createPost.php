@@ -10,12 +10,13 @@ require($_SERVER[ 'DOCUMENT_ROOT' ] . '/includes/application_includes.php');
 require_once(FS_TEMPLATES . 'Layout.php');
 //require_once(FS_TEMPLATES . 'index.php');
 // Connect to the database
-$db = new Datebase(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Initialize variables
 $requestType = $_SERVER[ 'REQUEST_METHOD' ];
 // Generate the HTML for the top of the page
 Layout::pageTop('CSC206 Project');
 // Page content goes here
+
 ?>
 
     <div class="container top25">
@@ -32,17 +33,23 @@ Layout::pageTop('CSC206 Project');
                     echo '<pre>';
                     print_r($_POST);
                     echo '</pre>';
-                    $sql = "insert into post (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
-                    $db->query($sql);
+
 
                     $title = $_POST['title'];
                     $startDate = $_POST['startDate'];
                     $startDate = date('Y-m-d h:i:s', strtotime($startDate));
                     $endDate = $_POST['endDate'];
                     $endDate = date('Y-m-d h:i:s', strtotime($endDate));
+                    $content = $_POST['content'];
 
+                    $sql = "insert into posts (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
+                    $db->query($sql);
 
-
+                    // connect to index.php page
+                    $con = mssql_connect('localhost', 'cdarment', 'Pokemon1!') or die('Could not connect');
+                    msql_select_db("csc206", $con) or die('Could not connect');
+                    $query = "SELECT localhost"; FROM csc206 ORDER BY Date;
+                    $result = msql_query($query) or die('Could not connect');
                 }
                 ?>
 
@@ -80,7 +87,7 @@ function showForm($data = null)
     $content = $data['content'];
     $startDate = $data['startDate'];
     $endDate = $data['endDate'];
-    $image = $data['image'];
+    //$image = $data['image'];
     echo <<<postdata
     <form id="createPostForm" action='createPost.php' method="POST" class="form-horizontal">
         <fieldset>

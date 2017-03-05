@@ -25,11 +25,11 @@ $res = $db->query($sql);
 // Generate HTML for top of the page
 Layout::pageTop('CSC206 Project');
 
-Layout::article1('Halo','','Brandon');
+Layout::article('Halo','','Brandon');
 
-Layout::article2('Open world', '','kaofawefoajopa','Caleb');
+Layout::article('Open world', '','kaofawefoajopa','Caleb');
 
-Layout::article3('Online', 'kajioefae', 'John');
+Layout::article('Online', 'kajioefae', 'John');
 
 Layout::blogpage('Blogs');
 /**
