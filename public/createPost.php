@@ -46,10 +46,10 @@ Layout::pageTop('CSC206 Project');
                     $db->query($sql);
 
                     // connect to index.php page
-                    $con = mssql_connect('localhost', 'cdarment', 'Pokemon1!') or die('Could not connect');
-                    msql_select_db("csc206", $con) or die('Could not connect');
-                    $query = "SELECT localhost"; FROM csc206 ORDER BY Date;
-                    $result = msql_query($query) or die('Could not connect');
+                    //$con = mssql_connect('localhost', 'cdarment', 'Pokemon1!') or die('Could not connect');
+                    //msql_select_db("csc206", $con) or die('Could not connect');
+                    //$query = "SELECT localhost"; FROM csc206 ORDER BY Date;
+                    //$result = msql_query($query) or die('Could not connect');
                 }
                 ?>
 

@@ -6,7 +6,7 @@
  * Time: 8:23 PM
  */
 //load all application files and configurations
-require($_SERVER[ 'DOCUMENT_ROOT'] . '/includes/application_includes.php');
+require($_SERVER[ 'DOCUMENT_ROOT'] . '/../includes/application_includes.php');
 // Include the HTML layout class
 require_once (FS_TEMPLATES. 'Layout.php');
 
@@ -39,7 +39,42 @@ Layout::blogpage('Blogs');
  *
  */
 // Generate HTML for bottom of the page
-
 ?>
 
+    <div class="container top25">
+        <div class="col-md-6">
+            <section class="content">
+                <?php
+                // Loop through the posts and display them
+                while ($post = $posts->fetch()) {
+                    // Call the method to create the layout for a post
+                    News::story($post);
+                }
+                ?>
+            </section>
+        </div>
+        <?php
+        /**
+         *
+         * This implementation abstracts out the table creation
+         *
+         * The implementation is a bit more complicated but notice how simple it is
+         * to render the table on your page.  This is the preferred way to do it.
+         *
+         */
+        ?>
+        <div class="col-md-6">
+            <section class="content">
+                <h1>Pages List - Abstracted</h1>
+                <p>This imeplementation builds full table from the results set. This implementation is better
+                    because there is no mixture of HTML on the page. The method merges the data</p>
+                <?php
+                $table = Layout::buildTable($res->fetchAll());
+                echo $table;
+                ?>
+            </section>
+        </div>
+    </div>
+<?php
 Layout::pageBottom();
+?>
