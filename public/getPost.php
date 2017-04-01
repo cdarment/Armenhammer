@@ -3,10 +3,12 @@
 // Load all application files and configurations
 require($_SERVER[ 'DOCUMENT_ROOT' ] . '/../includes/application_includes.php');
 require_once(FS_TEMPLATES . 'News.php');
+require_once(FS_TEMPLATES . 'Layout.php');
+
 // Generate the HTML for the top of the page
 Layout::pageTop('CSC206 Project');
 // Get the posts for this page from the database
-$sql = 'select posts.id, title, content, firstname, lastname  from posts, users where posts.userId = users.id';
+$sql = 'select posts.id, title, content, startdate, enddate  from posts ';
 $result = $db->query($sql);
 $posts = $result->fetchAll();
 // echo '<pre>'; print_r($posts); echo '</pre>'; die();
@@ -20,9 +22,11 @@ $posts = $result->fetchAll();
             // Create the table Header
             echo News::buildTableHeader($posts);
             // Fill data table
-            foreach ($posts as $post) {
-                $post['content'] = substr($post['content'], 0, 35) . '...';
-                echo News::buildTableRow($post);
+            if (is_array($posts)) {
+                foreach ($posts as $post) {
+                    $post['content'] = substr($post['content'], 0, 35) . '...';
+                    echo News::buildTableRow($post);
+                }
             }
             // Close the table
             echo News::closeTable();

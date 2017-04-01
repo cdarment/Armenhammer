@@ -5,7 +5,7 @@
  * Date: 2/22/2017
  * Time: 1:51 PM
  */// Load all application files and configurations
-require($_SERVER['DOCUMENT_ROOT'] . '/includes/application_includes.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/../includes/application_includes.php');
 // Include the HTML layout class
 require_once(FS_TEMPLATES . 'Layout.php');
 //require_once(FS_TEMPLATES . 'index.php');
@@ -127,13 +127,7 @@ function showForm($data = null)
                 </div>
             </div>
     
-            <!-- File Button -->
-            <div class="form-group">
-                <label class="col-md-3 control-label" for="image">Image Upload</label>
-                <div class="col-md-8">
-                    <input id="image" name="image" class="input-file" value="$image" type="file">
-                </div>
-            </div>
+
     
             <!-- Button (Double) -->
             <div class="form-group">

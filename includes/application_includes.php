@@ -11,9 +11,14 @@ require_once('config.php');
 // Include the database connection and query class
 require_once('Database.php');
 // Include the HTML layout class
-
+require_once (FS_TEMPLATES . 'Layout.php');
 // Connect to the database
 $db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Initialize variables
 $requestType = $_SERVER[ 'REQUEST_METHOD' ];
+
+Layout :: PageBottom();
+
+// Session Start
+session_start();
 
