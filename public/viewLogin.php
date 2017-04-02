@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Caleb Armentrout
- * Date: 3/18/2017
- * Time: 2:52 PM
- */
-
 // Load all application files and configurations
 require($_SERVER['DOCUMENT_ROOT'] . '/../includes/application_includes.php');
 // Include the HTML layout class
@@ -20,36 +13,36 @@ $requestType = $_SERVER[ 'REQUEST_METHOD' ];
 Layout::pageTop('CSC206 Project');
 if ( $requestType == 'GET' ) {
     $id = $_GET['id'];
-    $sql = 'select * from posts where id = ' . $_GET['id'];
+    $sql = 'select * from users where id = ' . $_GET['id'];
     //$db = query($sql);
     $result = $db->query($sql);
     $row = $result->fetch();
     $id = $row['id'];
-    $title= $row['title'];
-    $content= $row['content'];
-    $startDate= $row['startDate'];
-    $endDate= $row['endDate'];
+    $firstName= $row['firstName'];
+    $lastName= $row['lastName'];
+    $email= $row['email'];
+    $password= $row['password'];
 
     echo <<<post
 				
-                    <h2>$title</h2>
+                    <h2>firstName</h2>
 					<div class ="BlockText">
-					<p>$content</p>
+					<p>lastName</p>
 					</div>
-					<p>$startDate - $endDate</p>
+					<p>email</p>
 					
 post;
 }
 
 elseif ( $requestType == 'POST' ) {
     //Validate data
-$id = $_POST['id'];
-$title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-$content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+    $id = $_POST['id'];
+    $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
+    $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
 // Save data
-$sql =  "delete from posts where id=";
-$result = $db->query($sql);
-echo 'This Post was deleted successfully';
+    $sql =  "delete from users where id=";
+    $result = $db->query($sql);
+    echo 'This Post was deleted successfully';
 }
 ?>
 

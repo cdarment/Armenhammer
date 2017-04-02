@@ -21,14 +21,24 @@ class news
     {
         $title = $data['title'];
         $content = $data['content'];
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
         // $author = $data['firstname'] . ' ' . $data['lastname'];
         echo <<<story
         <div class="top10">
             <h2>$title</h2>
             <h5>Display from  sometime until some other time</h5>
             <p>$content</p>
-        </div>        
+        </div>    
+        
+        <div class="top10">
+            <h2>$firstName</h2>
+            <h2>$lastName</h2>
+            <h2>$email</h2>
+        </div>
 story;
+        // second table for login page
     }
     /**
      * Create the header to a table using the column names as the
@@ -76,7 +86,8 @@ story;
             $rowHTML .= '<td>' . $cell . '</td>';
         }
         $rowHTML .= '<td><a href="/updatePost.php? id=4">' . 'update' . '</a></td>';
-        $rowHTML .= '<td><a href="/deletePost.php? id=4">' . 'delete' . '</a></td>';
+        $rowHTML .= '<td><a href="/deletePost.php? id=1">' . 'delete' . '</a></td>';
+        $rowHTML .= '<td><a href="/viewPost.php? id=4">' . 'view' . '</a></td>';
         $rowHTML .= '</tr>';
         return $rowHTML;
     }
