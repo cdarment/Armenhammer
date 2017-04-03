@@ -179,6 +179,173 @@ pageBottem;
         return $table;
     }
 
+    Public static function signUp($email, $password, $firstName, $lastName){
+        echo <<< signUpForm
+        
+             <form id="signUpForm" action='signUp.php' method="POST" class="form-horizontal">
+                <fieldset>
+                
+                    <!-- Form Name -->
+                    <legend>Sign Up!</legend>
+                    
+                      <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="email">Email :</label>  
+                      <div class="col-md-5">
+                      <input id="email" name="email" type="text" placeholder="someone@email.com" value="$email" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="firstName">First Name :</label>  
+                      <div class="col-md-5">
+                      <input id="firstName" name="firstName" type="text" placeholder="Enter your first name." value="$firstName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="lastName">Last Name :</label>  
+                      <div class="col-md-5">
+                      <input id="lastName" name="lastName" type="text" placeholder="Enter your first name." value="$lastName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="password">Password :</label>  
+                      <div class="col-md-5">
+                      <input id="password" name="password" type="password" placeholder="Enter your password. 6 to 16 characters." value="$password" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                   
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="submit"></label>
+                      <div class="col-md-8">
+                        <button id="submit" name="submit" value="Submit" class="btn btn-success">Sign Up</button>
+                        <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-danger">Cancel</a></button>
+                      </div>
+                    </div>
+                
+                </fieldset>
+            </form>
+signUpForm;
+    }
+
+    public static function updateUser($id, $email, $firstName, $lastName, $password){
+        echo <<< updateUserForm
+        
+             <form id="updateUsersForm" action='updateUsers.php' method="POST" class="form-horizontal">
+                <fieldset>
+                
+                    <!-- Form Name -->
+                    <legend>Update User Information!</legend>
+                    <input type="hidden" name="id" value=$id>
+                      <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="email">Email</label>  
+                      <div class="col-md-5">
+                      <input id="email" name="email" type="text" placeholder="someone@email.com" value="$email" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="firstName">First Name</label>  
+                      <div class="col-md-5">
+                      <input id="firstName" name="firstName" type="text" placeholder="Enter your first name." value="$firstName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="lastName">Last Name</label>  
+                      <div class="col-md-5">
+                      <input id="lastName" name="lastName" type="text" placeholder="Enter your first name." value="$lastName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="password">Password</label>  
+                      <div class="col-md-5">
+                      <input id="password" name="password" type="text" placeholder="Enter your password. 6 to 16 characters." value="$password" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                   
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="submit"></label>
+                      <div class="col-md-8">
+                        <button id="submit" name="submit" value="Submit" class="btn btn-success">Update</button>
+                        <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-danger">Cancel</a></button>
+                      </div>
+                    </div>
+                
+                </fieldset>
+            </form>
+updateUserForm;
+    }
+    public static function viewForm($id, $title, $content, $startDate, $endDate){
+        echo <<<viewform
+            
+    <form id="createPostForm" action='updatePosts.php' method="POST" class="form-horizontal">
+        <fieldset>
+            <input type="hidden" name="id" value=$id">
+            <input type="hidden" name="title" value=$title">
+            <input type="hidden" name="content" value=$content">
+            <input type="hidden" name="startDate" value=$startDate">
+            <input type="hidden" name="endDate" value=$endDate">
+    
+            <!-- Form Name -->
+            <legend>View your post below!</legend>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="title">Title</label>
+                <div class="col-md-8">
+                    <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" readonly required="">                    
+                </div>
+            </div>
+    
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="content">Content</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="content" name="content" readonly>$content</textarea>
+                </div>
+            </div>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="startDate">Effective Date</label>
+                <div class="col-md-8">
+                    <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" readonly required="">
+                </div>
+            </div>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="endDate">End Date</label>
+                <div class="col-md-8">
+                    <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md" readonly>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+viewform;
+    }
 
 
 

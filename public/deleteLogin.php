@@ -41,4 +41,7 @@ elseif ( $requestType == 'POST' ) {
     $sql = "delete from users where id = $id";
     $result = $db->query($sql);
     echo 'It worked';
+
 }
+// Move them to the home page
+header('Location: index.php');

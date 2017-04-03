@@ -8,6 +8,11 @@ require_once(FS_TEMPLATES . 'News.php');
 // Connect to the database
 //$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Initialize variables
+if (! isset($_SESSION['user'])) {
+    header('location: login.php');
+}
+else {
+// Initialize variables
 $requestType = $_SERVER[ 'REQUEST_METHOD' ];
 // Generate the HTML for the top of the page
 Layout::pageTop('CSC206 Project');
@@ -15,9 +20,7 @@ Layout::pageTop('CSC206 Project');
 
 if ( $requestType == 'GET' ) {
 // Display the form
-    createLoginForm();
-
-
+    showForm();
 }  elseif ( $requestType == 'POST' ) {
     if (validateInput($_POST)) {
         echo '<h1> Welcome new user</h1>';
@@ -35,7 +38,7 @@ if ( $requestType == 'GET' ) {
         createLoginForm($_POST);
 
     }
-
+}
     /**
      * Functions that support the createPost page
      */
@@ -71,10 +74,19 @@ if ( $requestType == 'GET' ) {
     }
 
 
-    function createLoginForm($data = null)
+    function showForm($data = null)
+    {
+        $firstName = $data['firstName'];
+        $lastName = $data['lastName'];
+        $password = $data['password1'];
+        $email = $data['email'];
+
+        Layout::signUp($password, $email, $firstName, $lastName);
+    }
+    function createLoginForm($_Post)
     {
         echo <<< createLogin
-<form class="form-horizontal" method="post" action="createLogin.php">
+<form id="createLoginForm" action='createLogin.php' method="GET" class="form-horizontal">
     <fieldset>
 
         <!-- Form Name -->

@@ -18,39 +18,14 @@ if ( $requestType == 'GET' ) {
     $result = $db->query($sql);
     $row = $result->fetch();
     $id = $row['id'];
-    $firstName= $row['firstName'];
-    $lastName= $row['lastName'];
-    $email= $row['email'];
-    $password= $row['password'];
+    $firstName = $row['firstName'];
+    $lastName = $row['lastName'];
+    $email = $row['email'];
+    $password = $row['password'];
 
-    echo <<<post
-				
-                    <h2>firstName</h2>
-					<div class ="BlockText">
-					<p>lastName</p>
-					</div>
-					<p>email</p>
-					
-post;
+    //Layout::viewForm($id, $firstName, $lastName, $email, $password);
+    Layout::pageBottom();
+
+
 }
-
-elseif ( $requestType == 'POST' ) {
-    //Validate data
-    $id = $_POST['id'];
-    $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-    $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-// Save data
-    $sql =  "delete from users where id=";
-    $result = $db->query($sql);
-    echo 'This Post was deleted successfully';
-}
-?>
-
-
-
-<?php
-// Generate the page footer
-Layout::pageBottom();
-
-
 ?>

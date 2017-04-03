@@ -27,6 +27,7 @@ Layout::pageTop('CSC206 Project');
                 $content= $row['content'];
                 $startDate= $row['startDate'];
                 $endDate= $row['endDate'];
+                $image = $row['image'];
                 echo <<<postform
                     <form id="createPostForm" action='updatePost.php' method="POST" class="form-horizontal">
                         <fieldset>
