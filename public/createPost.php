@@ -42,7 +42,15 @@ Layout::pageTop('CSC206 Project');
                     $endDate = date('Y-m-d h:i:s', strtotime($endDate));
                     $content = $_POST['content'];
 
-                    $sql = "insert into posts (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "');";
+                    // Process the uploaded file
+                    // 1. Upload successful
+                    // 2. get Image size to verify it's an image
+                    // 3. move the image to a perm, location
+                    // 4. store the image location
+
+                    $image = 'destinypic.jpg';
+
+                    $sql = "insert into posts (title, content, startDate, endDate, userID, image) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "', 1, '" . $image . "');";
                     $db->query($sql);
 
                     // connect to index.php page
@@ -89,7 +97,7 @@ function showForm($data = null)
     $endDate = $data['endDate'];
     //$image = $data['image'];
     echo <<<postdata
-    <form id="createPostForm" action='createPost.php' method="POST" class="form-horizontal">
+    <form id="createPostForm" action='createPost.php' method="POST" class="form-horizontal" enctype= multipart/form-data>
         <fieldset>
     
             <!-- Form Name -->
@@ -127,7 +135,13 @@ function showForm($data = null)
                 </div>
             </div>
     
-
+        <!-- File Button --> 
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="imagename">Image</label>
+          <div class="col-md-4">
+            <input id="imagename" name="imagename" class="input-file" type="file">
+          </div>
+        </div>
     
             <!-- Button (Double) -->
             <div class="form-group">

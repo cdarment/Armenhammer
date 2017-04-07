@@ -9,84 +9,59 @@ require_once(FS_TEMPLATES . 'News.php');
 //$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Initialize variables
 if (! isset($_SESSION['user'])) {
-    header('location: login.php');
+    //header('location: createLogin.php');
 }
 else {
 // Initialize variables
-$requestType = $_SERVER[ 'REQUEST_METHOD' ];
+    $requestType = $_SERVER['REQUEST_METHOD'];
 // Generate the HTML for the top of the page
-Layout::pageTop('CSC206 Project');
+    Layout::pageTop('CSC206 Project');
 // Page content goes here
 
-if ( $requestType == 'GET' ) {
+    if ($requestType == 'GET') {
 // Display the form
-    showForm();
-}  elseif ( $requestType == 'POST' ) {
-    if (validateInput($_POST)) {
+        showForm();
+    } elseif ($requestType == 'POST') {
+
         echo '<h1> Welcome new user</h1>';
         $input = $_POST;
         $email = $_POST['email'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $sql = "insert into users (email, password, firstName, lastName, role_ID) values ('" . $input['email'] . "', '" . $password . "','" . $input['firstName'] . "', '" . $input['lastName'] . "', 2 );";
+        $sql = "insert into users (email, password, firstName, lastName,  role_ID) values ('" . $input['email'] . "', '" . $password . "','" . $input['firstName'] . "', '" . $input['lastName'] . "', 2 );";
         $db->query($sql);
         echo '<h1>Welcome</h1>';
-    } else {
-        // This is an error so show the form again
-        echo '<h1>Try again</h1>';
-        createLoginForm($_POST);
 
+    } else {
+
+        echo 'bad stuff';
     }
-}
     /**
-     * Functions that support the createPost page
+     * Functions that support the createLogin page
      */
     $fields = [
-        'password'   => ['required', 'varchar(255)'],
+        'password' => ['required', 'varchar(255)'],
         'firstName' => ['required', 'varchar(50)'],
         'lastName' => ['required', 'varchar(50)'],
         'email' => ['required', 'varchar(32)']
     ];
 
-    function validateInput($formData)
-    {
-        // use the global $fields list
-        global $fields;
-        $message = '';
-        // Assume everything will be valid
-        $validData = true;
-        // Loop through the whitelist to ensure required data is provided and the data
-        // is of the correct type
-//    foreach ($fields as $name => $field){
-//        $isRequired = ($field[0] == 'required') ? true : false;
-//
-//        $inArray = array_key_exists($name, $formData);
-//
-//
-//
-//        // Check for proper type of data
-//        // if ()
-//
-//
-//    }
-        return true;
-    }
+
+}
 
 
     function showForm($data = null)
     {
         $firstName = $data['firstName'];
         $lastName = $data['lastName'];
-        $password = $data['password1'];
+        $password = $data['password'];
         $email = $data['email'];
 
-        Layout::signUp($password, $email, $firstName, $lastName);
-    }
-    function createLoginForm($_Post)
-    {
-        echo <<< createLogin
-<form id="createLoginForm" action='createLogin.php' method="GET" class="form-horizontal">
+        //function createLoginForm($_Post)
+        //{
+           echo <<<Fred
+<form id="createLoginForm" action='createLogin.php' method="POST" class="form-horizontal">
     <fieldset>
 
         <!-- Form Name -->
@@ -94,9 +69,17 @@ if ( $requestType == 'GET' ) {
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="firstName">Create username</label>
+            <label class="col-md-4 control-label" for="firstName">First Name</label>
             <div class="col-md-4">
-                <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md">
+                <input id="firstName" name="firstName" type="text" placeholder="" value="$firstName" class="form-control input-md">
+
+            </div>
+        </div>
+             <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="lastName">Last Name</label>
+            <div class="col-md-4">
+                <input id="lastName" name="lastName" type="text" placeholder="" value="$lastName" class="form-control input-md">
 
             </div>
         </div>
@@ -104,14 +87,14 @@ if ( $requestType == 'GET' ) {
         <div class="form-group">
            <label class="col-md-4 control-label" for="email">Email</label>  
            <div class="col-md-4">
-               <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+               <input id="email" name="email" type="text" placeholder="" value="$email" class="form-control input-md" required="">
            </div> 
         </div>
         <!-- Password input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="password">Create Password</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="" class="form-control input-md">
+                <input id="password" name="password" type="password" placeholder="" value="$password" class="form-control input-md">
 
             </div>
         </div>
@@ -128,10 +111,11 @@ if ( $requestType == 'GET' ) {
     </fieldset>
 </form>
 
-createLogin;
+Fred;
 
+      //  }
     }
-}
+
 
 
 

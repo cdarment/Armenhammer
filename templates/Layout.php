@@ -81,11 +81,13 @@ class Layout
                                 <li><a href="/events.php">Events</a></li>
                                 <li><a href="/getPost.php">Editing posts</a></li>
                                 <li><a href="/createLogin.php">Create Login</a></li>
+                                <li><a href="/fileupload.php">Upload Image</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">                                        
                                         <li><a href="/getPosts.php">List</a></li>
                                         <li><a href="/createPost.php">New</a></li>
+                                        
                                         <
                                     </ul>
                                 </li>

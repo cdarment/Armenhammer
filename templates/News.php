@@ -21,13 +21,13 @@ class news
     {
         $title = $data['title'];
         $content = $data['content'];
-
+        $image = '/assets/images/'. $data['image'];
         // $author = $data['firstname'] . ' ' . $data['lastname'];
         echo <<<story
         <div class="top10">
             <h2>$title</h2>
-            <h5>Display from  sometime until some other time</h5>
             <p>$content</p>
+            <img src="$image" width="200">
         </div>    
 
 story;
