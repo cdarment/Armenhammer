@@ -69,28 +69,17 @@ class Layout
                               <span class="icon-bar"></span>
                               <span class="icon-bar"></span>
                             </button>
-                                <a class="navbar-brand topnav" href="/">CSC206 Project</a>
+                                <a class="navbar-brand topnav" href="/">Home</a>
                         </div>
         
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="navbar-collapse-1">						  
                             <ul class="nav navbar-nav  navbar-right">
-                                
-                                <li><a href="/about.php">About</a></li>  
-                                <li><a href="/createPost.php">Create Post</a></li>                        
-                                <li><a href="/events.php">Events</a></li>
+                                                                  
+                                <li><a href="/createPost.php">Create Post</a></li>                                                        
                                 <li><a href="/getPost.php">Editing posts</a></li>
                                 <li><a href="/createLogin.php">Create Login</a></li>
                                 <li><a href="/fileupload.php">Upload Image</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Posts<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">                                        
-                                        <li><a href="/getPosts.php">List</a></li>
-                                        <li><a href="/createPost.php">New</a></li>
-                                        
-                                        <
-                                    </ul>
-                                </li>
                                 <li><a href="/login.php"><i class="fa fa-sign-in fa-fw"></i> Login</a></li>	                       
                             </ul>						
                         </div><!-- /.navbar-collapse -->

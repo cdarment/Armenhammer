@@ -21,7 +21,14 @@ class news
     {
         $title = $data['title'];
         $content = $data['content'];
-        $image = '/assets/images/'. $data['image'];
+        $image =  '/assets/images/' . $data['image'];
+
+//        if (is_file($data['image'])) {
+//
+//            $image = '/assets/images/' . $data['image'];
+//           // echo $image;
+//        }
+
         // $author = $data['firstname'] . ' ' . $data['lastname'];
         echo <<<story
         <div class="top10">

@@ -36,67 +36,101 @@ Layout::pageTop('CSC206 Project');
 
 
                     $title = $_POST['title'];
-                    $startDate = $_POST['startDate'];
-                    $startDate = date('Y-m-d h:i:s', strtotime($startDate));
-                    $endDate = $_POST['endDate'];
-                    $endDate = date('Y-m-d h:i:s', strtotime($endDate));
-                    $content = $_POST['content'];
 
-                    // Process the uploaded file
-                    // 1. Upload successful
-                    // 2. get Image size to verify it's an image
-                    // 3. move the image to a perm, location
-                    // 4. store the image location
+                    //$image  = $_FILES['image'];
+                    //$file = $_FILES['imagename']['tmp_name'];
+                    // Check for a valid file upload
+                    $input = $_POST;
 
-                    $image = 'destinypic.jpg';
+                    $file = $_FILES['imagename']['tmp_name'];
+                    $fileName = $_FILES['imagename']['name'];
 
-                    $sql = "insert into posts (title, content, startDate, endDate, userID, image) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "', 1, '" . $image . "');";
-                    $db->query($sql);
+                    if (!$_FILES['imagename']['tmp_name'] == 0) {
+                        if (!is_uploaded_file($file)) {
+                            echo '<h3>Error</h3><p>File was not uploaded via POST form.</p>';
+                            exit;
+                        }
 
-                    // connect to index.php page
-                    //$con = mssql_connect('localhost', 'cdarment', 'Pokemon1!') or die('Could not connect');
-                    //msql_select_db("csc206", $con) or die('Could not connect');
-                    //$query = "SELECT localhost"; FROM csc206 ORDER BY Date;
-                    //$result = msql_query($query) or die('Could not connect');
+                        if (file_exists($file)) {
+                            $imagesizedata = getimagesize($file);
+                            if ($imagesizedata === false) {
+                                //not image
+                                echo '<h3>Error</h3><p>Uploaded file is not an image.</p>';
+                                exit;
+                            } else {
+                                //image information
+                                echo '<h3>Success</h3><p>The image was uploaded</p>';
+                                //echo '<pre>' . print_r($imagesizedata) . '</pre>';
+                                // Copy image to permanent location
+                                $uploaded_file = $_SERVER['DOCUMENT_ROOT'] . '/assets/images/' . $_FILES['imagename']['name'];
+                                // Move file to permanent location
+                                move_uploaded_file($file, $uploaded_file);
+                                // Display the image
+                                //showImage($input, $_FILES[ 'image' ]);
+                                $startDate = $_POST['startDate'];
+                                $startDate = date('Y-m-d h:i:s', strtotime($startDate));
+                                $endDate = $_POST['endDate'];
+                                $endDate = date('Y-m-d h:i:s', strtotime($endDate));
+                                $content = $_POST['content'];
+
+                                // Process the uploaded file
+                                // 1. Upload successful
+                                // 2. get Image size to verify it's an image
+                                // 3. move the image to a perm, location
+                                // 4. store the image location
+
+                                $image = $fileName;
+
+                                $sql = "insert into posts (title, content, startDate, endDate, userID, image) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "', 1, '" . $image . "');";
+                                $db->query($sql);
+
+                                // connect to index.php page
+                                //$con = mssql_connect('localhost', 'cdarment', 'Pokemon1!') or die('Could not connect');
+                                //msql_select_db("csc206", $con) or die('Could not connect');
+                                //$query = "SELECT localhost"; FROM csc206 ORDER BY Date;
+                                //$result = msql_query($query) or die('Could not connect');
+                            }
+                        }
+                    }
                 }
-                ?>
+                            ?>
 
 
-            </section>
-        </div>
+                            </section>
+                            </div>
 
-        <div class="col-md-4">
-            <section class="content">
-                <h1>Posts List</h1>
-                <p>Current and active posts.</p>
+                            <div class="col-md-4">
+                                <section class="content">
+                                    <h1>Posts List</h1>
+                                    <p>Current and active posts.</p>
 
-            </section>
-        </div>
-    </div>
+                                </section>
+                            </div>
+                            </div>
 
-<?php
+                            <?php
 
-/**
- * Functions that support the createPost page
- */
-$fields = [
-    'title'     => ['required', 'string'],
-    'content'   => ['required', 'string'],
-    'startDate' => ['required', 'date'],
-    'endDate'   => ['required', 'date'],
-    'image'     => ['date']
-];
-/**
- * Show the form
- */
-function showForm($data = null)
-{
-    $title = $data['title'];
-    $content = $data['content'];
-    $startDate = $data['startDate'];
-    $endDate = $data['endDate'];
-    //$image = $data['image'];
-    echo <<<postdata
+                            /**
+                             * Functions that support the createPost page
+                             */
+                            $fields = [
+                                'title' => ['required', 'string'],
+                                'content' => ['required', 'string'],
+                                'startDate' => ['required', 'date'],
+                                'endDate' => ['required', 'date'],
+                                'image' => ['date']
+                            ];
+                            /**
+                             * Show the form
+                             */
+                            function showForm($data = null)
+                            {
+                                $title = $data['title'];
+                                $content = $data['content'];
+                                $startDate = $data['startDate'];
+                                $endDate = $data['endDate'];
+                                //$image = $data['image'];
+                                echo <<<postdata
     <form id="createPostForm" action='createPost.php' method="POST" class="form-horizontal" enctype= multipart/form-data>
         <fieldset>
     
@@ -154,9 +188,7 @@ function showForm($data = null)
     
         </fieldset>
     </form>
-postform;
-}
 postdata;
-    {
-    }
-}
+                            }
+
+

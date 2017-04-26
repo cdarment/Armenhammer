@@ -19,29 +19,48 @@ $requestType = $_SERVER[ 'REQUEST_METHOD' ];
 Layout::pageTop('CSC206 Project');
 
 if ( $requestType == 'GET' ) {
-    $id = $_GET['id'];
-    // $sql = "delete from posts where id = $id";
-    // $db = query($sql);
-    $sql = 'select * from users where id = ' . $_GET['id'];
-    $result = $db->query($sql);
-    $row = $result->fetch();
-    $id = $row['id'];
-    $firstName = $row['firstName'];
-    $lastName = $row['lastName'];
-    $email = $row['email'];
-    $password = $row['password'];
-}
+    if (isset($_SESSION["users"])){
+        $id = $_SESSION["users"];
+        $sql = 'select * from users where id = ' . $id['id'];
+        $result = $db->query($sql);
+        $row = $result->fetch();
 
-elseif ( $requestType == 'POST' ) {
+
+
+
+        echo <<<postform
+				
+                    <form id="createPost" action='deleteLogin.php' method="POST" class="form-horizontal">
+                        <fieldset>
+						<p>Are you sure you want to DELETE this user?</p>
+                        <input type="hidden" name="id" value="">
+                            <!-- Form Name -->
+                            <legend>Delete User</legend>
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="submit"></label>
+                                <div class="col-md-8">
+                                    <button id="submit" name="submit" value="Submit" class="editButton">Delete</button>
+                                   <a class="deleteButton" href="index.php">Cancel</a>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+postform;
+    }
+    else{
+        echo '<p>Not Logged in</p>';
+    }
+} elseif ( $requestType == 'POST' ) {
     //Validate data
-    $id = $_POST['id'];
-//$title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-//$content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-// Save data
-    $sql = "delete from users where id = $id";
+    $id = $_SESSION["users"];
+    // Save data
+    $sql =  'delete from users where id= ' . $id['id'];
     $result = $db->query($sql);
-    echo 'It worked';
-
+    unset($_SESSION['username']);
+    session_destroy();
+    echo 'This user was deleted successfully';
 }
+
 // Move them to the home page
 header('Location: index.php');

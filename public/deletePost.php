@@ -26,19 +26,20 @@ $requestType = $_SERVER[ 'REQUEST_METHOD' ];
 Layout::pageTop('CSC206 Project');
 
 if ( $requestType == 'GET' ) {
-    $id = $_GET['id'];
-    // $sql = "delete from posts where id = $id";
-   // $db = query($sql);
-    $sql = 'select * from posts where id = ' . $_GET['id'];
-    $result = $db->query($sql);
-    $row = $result->fetch();
-    $id = $row['id'];
-    $title= $row['title'];
-    $content= $row['content'];
-    $startDate= $row['startDate'];
-    $endDate= $row['endDate'];
+   // if (isset($_SESSION["users"])) {
+        $id = $_GET['id'];
+        // $sql = "delete from posts where id = $id";
+        // $db = query($sql);
+        $sql = 'select * from posts where id = ' . $_GET['id'];
+        $result = $db->query($sql);
+        $row = $result->fetch();
+        $id = $row['id'];
+        $title = $row['title'];
+        $content = $row['content'];
+        $startDate = $row['startDate'];
+        $endDate = $row['endDate'];
 
-    echo <<<postform
+        echo <<<postform
                          <form id="createPostForm" action='deletePost.php' method="POST" class="form-horizontal">
                         <fieldset>
 						<p>Are you sure you want to DELETE this post?</p>
@@ -57,6 +58,11 @@ if ( $requestType == 'GET' ) {
                     </form>
 postform;
 
+//    }
+
+ //   else{
+     //   echo '<p> Not Logged in </p>';
+  //  }
 }
  elseif ( $requestType == 'POST' ) {
     //Validate data
@@ -64,7 +70,7 @@ $id = $_POST['id'];
 //$title = htmlspecialchars($_POST['title'], ENT_QUOTES);
 //$content = htmlspecialchars($_POST['content'], ENT_QUOTES);
 // Save data
-$sql = "delete from post where id = $id";
+$sql = "delete from posts where id = $id";
 $result = $db->query($sql);
 echo 'It worked';
 }
